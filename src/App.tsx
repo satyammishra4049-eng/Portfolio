@@ -73,7 +73,7 @@ const SKILLS = [
 ];
 
 const CERTIFICATIONS = [
-  { title: "Generative AI Studio", issuer: "Google Cloud", date: "2024" },
+  { title: "Generative AI", issuer: "Google Cloud", date: "2024" },
   { title: "Software Engineering Simulation", issuer: "JPMorgan Chase & Co.", date: "2024" },
   { title: "Data Analytics Simulation", issuer: "Deloitte", date: "2024" },
   { title: "Business Certification", issuer: "Nestlé", date: "2024" }
