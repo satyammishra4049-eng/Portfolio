@@ -479,7 +479,7 @@ export default function App() {
                 Let's Talk
               </a>
               <a 
-                href="https://drive.google.com/file/d/18T8suxTtPnDN6M3fe1Y4t0cOoMlhxmZD/view?usp=sharing" 
+                href="https://drive.google.com/file/d/1lDtEhe5O-guZ8eDzZJMBmmkI9yL8mDTW/view?usp=sharing" 
                 download="Satyam_Mishra_Resume.pdf"
                 className="px-10 py-5 bg-white/20 backdrop-blur-md text-black font-bold rounded-full border border-black/10 flex items-center justify-center gap-2 hover:bg-white/30 transition-all"
               >
