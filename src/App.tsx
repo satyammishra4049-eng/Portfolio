@@ -199,9 +199,9 @@ export default function App() {
             transition={{ delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-6"
           >
-            Bridging Data Insights with <br />
+            Hi, I am Satyam Mishra, <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">
-              Scalable Software.
+              welcome to my portfolio.
             </span>
           </motion.h1>
           
@@ -460,13 +460,23 @@ export default function App() {
             {/* Education */}
             <div>
               <SectionHeading>Education</SectionHeading>
-              <div className="relative border-l border-zinc-800 pl-8 space-y-12">
-                <div className="relative">
-                  <div className="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-orange-500 border-4 border-zinc-950" />
-                  <div className="text-orange-500 font-bold text-sm mb-2">2025 — 2029 (Expected)</div>
-                  <h3 className="text-xl font-bold text-white mb-1">B.Tech in Computer Science</h3>
-                  <p className="text-zinc-400 font-medium mb-4">AI/ML & Data Science Specialization</p>
+              <div className="relative">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 relative">
+                  <img 
+                    src="/education-image.jpg" 
+                    alt="Satyam Mishra Education" 
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  />
+                  <div className="absolute bottom-6 right-6 p-6 bg-orange-500 rounded-2xl text-black">
+                    <div className="text-4xl font-bold">2029</div>
+                    <div className="text-xs font-bold uppercase tracking-wider opacity-80">Expected B.Tech</div>
+                  </div>
+                </div>
+                <div className="mt-8 space-y-4">
+                  <h3 className="text-xl font-bold text-white">B.Tech in Computer Science</h3>
+                  <p className="text-zinc-400 font-medium">AI/ML & Data Science Specialization</p>
                   <p className="text-sm text-zinc-500">NxtWave Institute of Advanced Technologies, Pune</p>
+                  <p className="text-orange-500 font-bold text-sm">2025 — 2029 (Expected)</p>
                 </div>
               </div>
             </div>
