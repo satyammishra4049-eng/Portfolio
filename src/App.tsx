@@ -47,7 +47,7 @@ const PROJECTS: Project[] = [
     contribution: "Built a full-featured expense tracker with categorization, filtering, data visualization, and responsive design. Implemented charts and dashboards for financial insights.",
     impact: "Empowered users with better financial awareness through intuitive expense tracking and visual analytics.",
     tech: ["React", "JavaScript", "CSS", "Charts.js", "Vercel"],
-    link: "https://portfolio-seven-rho-d280ped6dt.vercel.app"
+    link: "https://trackify-alpha-six.vercel.app/"
   },
   {
     title: "Movie Recommendation System",
