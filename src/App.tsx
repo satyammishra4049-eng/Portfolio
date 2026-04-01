@@ -528,7 +528,7 @@ export default function App() {
                 Let's Talk
               </a>
               <a 
-                href="https://drive.google.com/file/d/16WaGw4uf34HdausP0xgjAsTsn7kfE7SY/view?usp=sharing" 
+                href="https://drive.google.com/file/d/12ZHZiMy6EFz5AHkmSg_TvH-eWVMm248T/view?usp=sharing" 
                 download="Satyam_Mishra_Resume.pdf"
                 className="px-10 py-5 bg-white/20 backdrop-blur-md text-black font-bold rounded-full border border-black/10 flex items-center justify-center gap-2 hover:bg-white/30 transition-all"
               >
