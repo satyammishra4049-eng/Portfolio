@@ -403,19 +403,16 @@ export default function App() {
                         </div>
                       </div>
 
-                      <div className="pt-6 border-t border-zinc-800 flex gap-4">
+                      <div className="pt-6 border-t border-zinc-800">
                         {project.link && (
                           <a 
                             href={project.link} 
                             target="_blank"
-                            className="flex-1 py-3 bg-white text-black font-bold rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-orange-500 hover:text-white transition-all"
+                            className="w-full py-3 bg-white text-black font-bold rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-orange-500 hover:text-white transition-all"
                           >
                             Demo <ExternalLink className="w-3 h-3" />
                           </a>
                         )}
-                        <button className="flex-1 py-3 bg-zinc-950 border border-zinc-800 text-white font-bold rounded-xl text-xs hover:border-zinc-600 transition-all">
-                          Details
-                        </button>
                       </div>
                     </motion.div>
                   </div>
