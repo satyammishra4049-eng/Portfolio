@@ -199,9 +199,9 @@ export default function App() {
             transition={{ delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-6"
           >
-            Hi, I am Satyam Mishra, <br />
+            Hi, I am Satyam Mishra <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-300">
-              welcome to my portfolio.
+              Welcome to my Portfolio.
             </span>
           </motion.h1>
           
