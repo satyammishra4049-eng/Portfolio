@@ -454,8 +454,18 @@ export default function App() {
       <section className="py-24 bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16">
-            {/* Education section removed */}
-            <div></div>
+            {/* Education */}
+            <div>
+              <SectionHeading>Education</SectionHeading>
+              <div className="space-y-6">
+                <div className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800">
+                  <h3 className="text-xl font-bold text-white mb-2">B.Tech in Computer Science</h3>
+                  <p className="text-orange-500 font-medium mb-2">(AI/ML & Data Science)</p>
+                  <p className="text-zinc-400 text-sm">NxtWave Institute of Advanced Technologies, Pune</p>
+                  <p className="text-orange-500 font-bold text-sm mt-3">(Expected 2029)</p>
+                </div>
+              </div>
+            </div>
 
             {/* Certifications */}
             <div>
