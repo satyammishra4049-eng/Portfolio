@@ -450,33 +450,12 @@ export default function App() {
         </div>
       </section>
 
-      {/* --- Experience & Education --- */}
+      {/* Experience & Education --- */}
       <section className="py-24 bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16">
-            {/* Education */}
-            <div>
-              <SectionHeading>Education</SectionHeading>
-              <div className="relative">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 relative">
-                  <img 
-                    src="/my-education-image.jpg" 
-                    alt="Satyam Mishra Education" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                  />
-                  <div className="absolute bottom-6 right-6 p-6 bg-orange-500 rounded-2xl text-black">
-                    <div className="text-4xl font-bold">2029</div>
-                    <div className="text-xs font-bold uppercase tracking-wider opacity-80">Expected B.Tech</div>
-                  </div>
-                </div>
-                <div className="mt-8 space-y-4">
-                  <h3 className="text-xl font-bold text-white">B.Tech in Computer Science</h3>
-                  <p className="text-zinc-400 font-medium">AI/ML & Data Science Specialization</p>
-                  <p className="text-sm text-zinc-500">NxtWave Institute of Advanced Technologies, Pune</p>
-                  <p className="text-orange-500 font-bold text-sm">2025 — 2029 (Expected)</p>
-                </div>
-              </div>
-            </div>
+            {/* Education section removed */}
+            <div></div>
 
             {/* Certifications */}
             <div>
