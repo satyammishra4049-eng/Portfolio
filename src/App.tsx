@@ -16,6 +16,7 @@ import {
   Database, 
   Download, 
   ChevronRight, 
+  ChevronLeft,
   Award, 
   GraduationCap,
   Briefcase,
@@ -39,6 +40,15 @@ interface Project {
 }
 
 const PROJECTS: Project[] = [
+  {
+    title: "Trackify – Expense Tracker",
+    description: "A comprehensive web app to track daily expenses and income in a simple and organized way with advanced financial insights.",
+    problem: "Managing personal finances can be overwhelming without proper tools. Users struggle to understand their spending patterns and make informed financial decisions.",
+    contribution: "Built a full-featured expense tracker with categorization, filtering, data visualization, and responsive design. Implemented charts and dashboards for financial insights.",
+    impact: "Empowered users with better financial awareness through intuitive expense tracking and visual analytics.",
+    tech: ["React", "JavaScript", "CSS", "Charts.js", "Vercel"],
+    link: "https://portfolio-seven-rho-d280ped6dt.vercel.app"
+  },
   {
     title: "Movie Recommendation System",
     description: "A smart, web-based application that suggests movies based on user preferences and search criteria.",
@@ -114,11 +124,21 @@ const SectionHeading = ({ children, subtitle }: { children: React.ReactNode; sub
 export default function App() {
   const [activeNav, setActiveNav] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const nextProject = () => {
+    setCurrentProjectIndex((prev) => (prev + 1) % PROJECTS.length);
+  };
+
+  const prevProject = () => {
+    setCurrentProjectIndex((prev) => (prev - 1 + PROJECTS.length) % PROJECTS.length);
+  };
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-300 font-sans selection:bg-orange-500/30 selection:text-orange-500">
@@ -342,60 +362,93 @@ export default function App() {
             Featured Projects
           </SectionHeading>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PROJECTS.map((project, idx) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-3xl bg-zinc-900/50 border border-zinc-800 hover:border-orange-500/30 transition-all group flex flex-col h-full"
-              >
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map(t => (
-                    <span key={t} className="px-3 py-1 rounded-full bg-zinc-950 border border-zinc-800 text-[10px] font-bold uppercase tracking-wider text-zinc-500">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-500 transition-colors">{project.title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-8 flex-grow">{project.description}</p>
-                
-                <div className="space-y-4 mb-8">
-                  <div className="flex gap-3">
-                    <div className="mt-1 shrink-0"><CheckCircle2 className="w-4 h-4 text-orange-500" /></div>
-                    <div>
-                      <span className="text-white font-bold text-xs block mb-1">Challenge</span>
-                      <p className="text-xs text-zinc-500 line-clamp-2">{project.problem}</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <div className="mt-1 shrink-0"><CheckCircle2 className="w-4 h-4 text-orange-500" /></div>
-                    <div>
-                      <span className="text-white font-bold text-xs block mb-1">Contribution</span>
-                      <p className="text-xs text-zinc-500 line-clamp-2">{project.contribution}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-6 border-t border-zinc-800 flex gap-4">
-                  {project.link && (
-                    <a 
-                      href={project.link} 
-                      target="_blank"
-                      className="flex-1 py-3 bg-white text-black font-bold rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-orange-500 hover:text-white transition-all"
+          <div className="relative">
+            {/* Carousel Container */}
+            <div className="overflow-hidden rounded-2xl">
+              <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentProjectIndex * 100}%)` }}>
+                {PROJECTS.map((project, idx) => (
+                  <div key={project.title} className="w-full flex-shrink-0 px-4">
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.1 }}
+                      className="p-8 rounded-3xl bg-zinc-900/50 border border-zinc-800 hover:border-orange-500/30 transition-all group"
                     >
-                      Demo <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
-                  <button className="flex-1 py-3 bg-zinc-950 border border-zinc-800 text-white font-bold rounded-xl text-xs hover:border-zinc-600 transition-all">
-                    Details
-                  </button>
-                </div>
-              </motion.div>
-            ))}
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tech.map(t => (
+                          <span key={t} className="px-3 py-1 rounded-full bg-zinc-950 border border-zinc-800 text-[10px] font-bold uppercase tracking-wider text-zinc-500">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-500 transition-colors">{project.title}</h3>
+                      <p className="text-zinc-400 text-sm leading-relaxed mb-8">{project.description}</p>
+                      
+                      <div className="space-y-4 mb-8">
+                        <div className="flex gap-3">
+                          <div className="mt-1 shrink-0"><CheckCircle2 className="w-4 h-4 text-orange-500" /></div>
+                          <div>
+                            <span className="text-white font-bold text-xs block mb-1">Challenge</span>
+                            <p className="text-xs text-zinc-500">{project.problem}</p>
+                          </div>
+                        </div>
+                        <div className="flex gap-3">
+                          <div className="mt-1 shrink-0"><CheckCircle2 className="w-4 h-4 text-orange-500" /></div>
+                          <div>
+                            <span className="text-white font-bold text-xs block mb-1">Contribution</span>
+                            <p className="text-xs text-zinc-500">{project.contribution}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="pt-6 border-t border-zinc-800 flex gap-4">
+                        {project.link && (
+                          <a 
+                            href={project.link} 
+                            target="_blank"
+                            className="flex-1 py-3 bg-white text-black font-bold rounded-xl text-xs flex items-center justify-center gap-2 hover:bg-orange-500 hover:text-white transition-all"
+                          >
+                            Demo <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
+                        <button className="flex-1 py-3 bg-zinc-950 border border-zinc-800 text-white font-bold rounded-xl text-xs hover:border-zinc-600 transition-all">
+                          Details
+                        </button>
+                      </div>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevProject}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white hover:bg-orange-500 hover:text-black transition-all z-10"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={nextProject}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white hover:bg-orange-500 hover:text-black transition-all z-10"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center gap-2 mt-8">
+              {PROJECTS.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentProjectIndex(idx)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    idx === currentProjectIndex ? 'bg-orange-500 w-8' : 'bg-zinc-700 hover:bg-zinc-600'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -407,13 +460,24 @@ export default function App() {
             {/* Education */}
             <div>
               <SectionHeading>Education</SectionHeading>
-              <div className="relative border-l border-zinc-800 pl-8 space-y-12">
-                <div className="relative">
-                  <div className="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-orange-500 border-4 border-zinc-950" />
-                  <div className="text-orange-500 font-bold text-sm mb-2">2025 — 2029 (Expected)</div>
-                  <h3 className="text-xl font-bold text-white mb-1">B.Tech in Computer Science</h3>
-                  <p className="text-zinc-400 font-medium mb-4">AI/ML & Data Science Specialization</p>
+              <div className="relative">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 relative">
+                  <img 
+                    src="https://picsum.photos/seed/satyam-education/800/600" 
+                    alt="Satyam Mishra Education" 
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute bottom-6 right-6 p-6 bg-orange-500 rounded-2xl text-black">
+                    <div className="text-4xl font-bold">2029</div>
+                    <div className="text-xs font-bold uppercase tracking-wider opacity-80">Expected B.Tech</div>
+                  </div>
+                </div>
+                <div className="mt-8 space-y-4">
+                  <h3 className="text-xl font-bold text-white">B.Tech in Computer Science</h3>
+                  <p className="text-zinc-400 font-medium">AI/ML & Data Science Specialization</p>
                   <p className="text-sm text-zinc-500">NxtWave Institute of Advanced Technologies, Pune</p>
+                  <p className="text-orange-500 font-bold text-sm">2025 — 2029 (Expected)</p>
                 </div>
               </div>
             </div>
@@ -479,7 +543,7 @@ export default function App() {
                 Let's Talk
               </a>
               <a 
-                href="https://drive.google.com/file/d/1lDtEhe5O-guZ8eDzZJMBmmkI9yL8mDTW/view?usp=sharing" 
+                href="https://drive.google.com/file/d/16WaGw4uf34HdausP0xgjAsTsn7kfE7SY/view?usp=sharing" 
                 download="Satyam_Mishra_Resume.pdf"
                 className="px-10 py-5 bg-white/20 backdrop-blur-md text-black font-bold rounded-full border border-black/10 flex items-center justify-center gap-2 hover:bg-white/30 transition-all"
               >
