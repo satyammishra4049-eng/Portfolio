@@ -64,14 +64,17 @@ const PROJECTS: Project[] = [
     problem: "Raw sales data is difficult to interpret. This dashboard transforms it into actionable business intelligence.",
     contribution: "Engineered data cleaning pipelines using Power Query and designed interactive KPIs for revenue and profit analysis.",
     impact: "Enabled data-driven decision making by highlighting underperforming regions and growth opportunities.",
-    tech: ["Power BI", "Power Query", "Data Analysis", "Excel"]
+    tech: ["Power BI", "Power Query", "Data Analysis"],
+    link: "https://github.com/satyammishra4049-eng/E-commerce-Dashboard-.git"
   },
   {
-    title: "Interactive Web Suite",
-    description: "A collection of high-performance web utilities including a Calculator and classic games like Tic-Tac-Toe.",
-    problem: "Demonstrating core programming logic and UI/UX principles through functional, responsive web components.",
-    contribution: "Developed modular JavaScript logic and focused on pixel-perfect responsive design using modern CSS frameworks.",
-    tech: ["JavaScript", "HTML5", "CSS3", "Bootstrap"]
+    title: "SkillMap Career Agent",
+    description: "An AI-powered career guidance agent that provides skill-based career suggestions, job recommendations, and market demand insights for students and freshers.",
+    problem: "Students and freshers need real-time career guidance and job market insights tailored to their skills and location preferences.",
+    contribution: "Built the agent using Python, LangChain, and Google Gemini, integrated RapidAPI's JSearch API for live job listings, and enabled contextual job details based on company, role, location, and application links.",
+    impact: "Helped users understand market demand and make informed career choices with personalized recommendations and job search support.",
+    tech: ["Python", "LangChain", "Google Gemini", "RapidAPI", "AI Career Guidance"],
+    link: "https://github.com/satyammishra4049-eng/AI-skillmap-Agent.git"
   }
 ];
 
@@ -83,10 +86,10 @@ const SKILLS = [
 ];
 
 const CERTIFICATIONS = [
-  { title: "Generative AI", issuer: "Google Cloud", date: "2026" },
-  { title: "Software Engineering Simulation", issuer: "JPMorgan Chase & Co.", date: "2026" },
-  { title: "Data Analytics Simulation", issuer: "Deloitte", date: "2026" },
-  { title: "Business Certification", issuer: "Nestlé", date: "2026" }
+  { title: "Generative AI", issuer: "Google Cloud", date: "2026", link: "https://drive.google.com/file/d/1YcwXDKrV1YHh5ciHaoT0Jupc-UqwUdVg/view?usp=sharing" },
+  { title: "Software Engineering Simulation", issuer: "JPMorgan Chase & Co.", date: "2026", link: "https://drive.google.com/file/d/1V4x31l4JWxk8t1gwpww7_ySLQCpznorr/view?usp=sharing" },
+  { title: "Data Analytics Simulation", issuer: "Deloitte", date: "2026", link: "https://drive.google.com/file/d/1kHFVx8NRwNC-yf0JFY-7GdTir1cRRSeR/view?usp=sharing" },
+  { title: "Nestlé Certification", issuer: "Nestlé", date: "2026", link: "https://drive.google.com/file/d/1bzWvQ0ImiqgTmxvCdRrPGGIvoujGkAil/view?usp=sharing" }
 ];
 
 // --- Components ---
@@ -190,7 +193,7 @@ export default function App() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
             </span>
-            Available for Internships
+            Interested for Internship
           </motion.div>
           
           <motion.h1 
@@ -323,7 +326,7 @@ export default function App() {
       {/* --- Skills Section --- */}
       <section id="skills" className="py-24 bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-6">
-          <SectionHeading subtitle="A comprehensive toolkit designed for the modern data-driven software landscape.">
+          <SectionHeading>
             Technical Skills
           </SectionHeading>
           
@@ -471,27 +474,36 @@ export default function App() {
             <div>
               <SectionHeading>Certifications</SectionHeading>
               <div className="grid gap-4">
-                {CERTIFICATIONS.map((cert, idx) => (
-                  <motion.div
-                    key={cert.title}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800 flex items-center justify-between group hover:border-orange-500/30 transition-all"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 bg-zinc-800 rounded-lg text-orange-500 group-hover:bg-orange-500 group-hover:text-black transition-colors">
-                        <Award className="w-5 h-5" />
+                {CERTIFICATIONS.map((cert, idx) => {
+                  const card = (
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800 flex items-center justify-between group hover:border-orange-500/30 transition-all"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 bg-zinc-800 rounded-lg text-orange-500 group-hover:bg-orange-500 group-hover:text-black transition-colors">
+                          <Award className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h4 className="text-white font-bold text-sm">{cert.title}</h4>
+                          <p className="text-xs text-zinc-500">{cert.issuer}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="text-white font-bold text-sm">{cert.title}</h4>
-                        <p className="text-xs text-zinc-500">{cert.issuer}</p>
-                      </div>
-                    </div>
-                    <div className="text-xs font-bold text-zinc-600">{cert.date}</div>
-                  </motion.div>
-                ))}
+                      <div className="text-xs font-bold text-zinc-600">{cert.date}</div>
+                    </motion.div>
+                  );
+
+                  return cert.link ? (
+                    <a key={cert.title} href={cert.link} target="_blank" rel="noopener noreferrer" className="group">
+                      {card}
+                    </a>
+                  ) : (
+                    <div key={cert.title}>{card}</div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -528,7 +540,7 @@ export default function App() {
                 Let's Talk
               </a>
               <a 
-                href="https://drive.google.com/file/d/12ZHZiMy6EFz5AHkmSg_TvH-eWVMm248T/view?usp=sharing" 
+                href="https://docs.google.com/document/d/1PEXHp7kHzDeDbjfxHY2ktK_bO7fI92f23uydzzzNizI/edit?usp=sharing" 
                 download="Satyam_Mishra_Resume.pdf"
                 className="px-10 py-5 bg-white/20 backdrop-blur-md text-black font-bold rounded-full border border-black/10 flex items-center justify-center gap-2 hover:bg-white/30 transition-all"
               >
